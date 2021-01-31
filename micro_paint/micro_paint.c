@@ -59,22 +59,17 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 		return(put_error("Error: argument"));
-
 	file = fopen(argv[1], "r");
 	if (!file)
 		return(put_error("Error: Operation file corrupted"));
-
 	flag = fscanf(file, "%d %d %c\n", &width, &height, &background);
 	if (flag != 3)
 		return(put_error("Error: Operation file corrupted"));
-
 	if (!is_valid_size(width, height))
 		return(put_error("Error: Operation file corrupted"));
-
 	char canvas[height][width];
 	for (int i = 0; i < height; i++)
 		memset(canvas[i], background, width);
-
 	while (flag)
 	{
 		flag = fscanf(file, "%c %f %f %f %f %c\n", &type, &x, &y, &rec_width, &rec_height, &filler);
