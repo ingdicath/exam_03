@@ -30,8 +30,8 @@ float calc_distance(float x1, float x2, float y1, float y2)
 	return (sqrtf(powf((x2 - x1), 2) + powf((y2 - y1), 2)));
 }
 
-void draw_canvas(int width, int height, char type, float x, float y, float radius,
-	char filler, char canvas[height][width])
+void draw_canvas(int width, int height, char canvas[height][width], 
+				char type, float x, float y, float radius, char filler)
 {
 	for (int i = 0; i < height; i++)
 	{
@@ -68,22 +68,17 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 		return (put_error("Error: argument"));
-
 	file = fopen(argv[1], "r");
 	if (!file)
 		return (put_error("Error: Operation file corrupted"));
-
 	flag = fscanf(file, "%d %d %c\n", &width, &height, &background);
 	if (flag != 3)
 		return (put_error("Error: Operation file corrupted"));
-
 	if (!is_valid_size(width, height))
 		return (put_error("Error: Operation file corrupted"));
-
 	char canvas[height][width];
 	for (int i = 0; i < height; i++)
 		memset(canvas[i], background, width);
-
 	while (flag)
 	{
 		flag = fscanf(file, "%c %f %f %f %c\n", &type, &x, &y, &radius, &filler);
@@ -91,7 +86,7 @@ int main(int argc, char **argv)
 			break ;
 		if (flag != 5 || !is_valid_type(type) || radius <= 0)
 			return (put_error("Error: Operation file corrupted"));		
-		draw_canvas(width, height, type, x, y, radius, filler, canvas);
+		draw_canvas(width, height, canvas, type, x, y, radius, filler);
 	}
 	fclose(file);
 	print_canvas(width, height, canvas);
