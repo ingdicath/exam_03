@@ -1,5 +1,5 @@
-gcc -Wall -Wextra -Werror mini_paint.c -o mini
-gcc -Wall -Wextra -Werror our_mini_paint.c -o reference
+gcc -Wall -Wextra -Werror ../mini_paint.c -o mini -lm
+gcc -Wall -Wextra -Werror our_mini_paint.c -o reference -lm
 echo ""
 echo "TEST - <ex_1>"
 echo "My Answer"
