@@ -32,7 +32,7 @@ void draw_canvas(int width, int height, char canvas[height][width], char type,
 		for (int j = 0; j < width; j++)
 		{
 			int distance = x <= j && j <= rbx && y <= i && i <= rby;
-			int border = j - x < 1.0 || rbx - j < 1.0 || i - y < 1.0 || rby - i < 1.0;
+			int border = j - x < 1 || rbx - j < 1 || i - y < 1 || rby - i < 1;
 			if (type =='R' && distance) 
 			  	canvas[i][j] = filler;
 			else if (type == 'r' && distance && border)

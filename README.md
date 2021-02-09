@@ -1,4 +1,4 @@
-# codam_exam_03
+# exam_03
 
 Practice for exam rank03.
 
